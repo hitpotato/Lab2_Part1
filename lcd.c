@@ -110,7 +110,7 @@ void initLCD(void) {
  * the cursor increments its position automatically.
  * Since a string is just a character array, try to be clever with your use of pointers.
  */
-void printStringLCD(const char* s) {
+void printStringLCD(unsigned char* s) {
     int i;
     for(i = 0; i < strlen(s); i++) {
         printCharLCD(s[i]); //unsure if pointers are correct
@@ -123,7 +123,7 @@ void printStringLCD(const char* s) {
 void clearLCD(){
     unsigned char word = 0x01;
     writeLCD(word, 0, 1400);
-    
+    moveCursorLCD('1','1');
 }
 
 /*
