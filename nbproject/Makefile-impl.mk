@@ -24,7 +24,11 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
+<<<<<<< HEAD
 PROJECTNAME=Lab2_Part1-master
+=======
+PROJECTNAME=Lab2-Part2.X
+>>>>>>> origin/master
 
 # Active Configuration
 DEFAULTCONF=default
