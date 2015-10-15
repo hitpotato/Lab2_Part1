@@ -12,7 +12,7 @@ void initLCD(void);
 void clearLCD(void);
 void moveCursorLCD(unsigned char x, unsigned char y);
 void printCharLCD(char c);
-void printStringLCD(const char* s);
+void printStringLCD(unsigned char* s);
 void testLCD();
 
 #endif

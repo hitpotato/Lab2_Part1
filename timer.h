@@ -1,15 +1,16 @@
 /* 
  * File:   timer.h
- * Authors:
+ * Author: 
  *
  * Created on December 30, 2014, 8:07 PM
  */
 
-#ifndef TIMER_H
-#define	TIMER_H
+#ifndef INITTIMER_H
+#define	INITTIMER_H
 
 void delayUs(unsigned int delay);
-void initTMR2();
+void initTMR();
+void breakdownTMR(unsigned int tenms);
 
 #endif	/* INITTIMER_H */
 

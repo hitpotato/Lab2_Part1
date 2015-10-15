@@ -6,23 +6,22 @@
  */
 
 #include <xc.h>
-#include "timer.h"
+#include "lcd.h"
 
-void initTMR2(){
-    TMR2 = 0;// clear TMR2
-    T2CONbits.TCKPS = 0; // Initialize pre-scalar to 1
-    T2CONbits.TCS = 0; // Use internal peripheral clock
-    IPC2bits.T2IP = 7;
-    IPC2bits.T2IS = 3;
-}
 
+void initTMR() {
+    //Initialize Timer 1 for debounce delay
+    TMR1 = 0;// clear TMR1
+    PR1 = 6;// Initialize PR1 to 6 (corresponds to 1us)
+    T1CONbits.TCKPS = 0; // Initialize pre-scalar to 1
+    T1CONbits.TCS = 0; // Use internal peripheral clock
+    IFS0bits.T1IF = 0; //lower interrupt flag
+   }
 void delayUs(unsigned int delay){
-
-    TMR2 = 0; // clear TMR2
-    PR2 = delay*6; // PR2 so that delay equals 1us * delay
-    IFS0bits.T2IF = 0; // Lower interrupt flag
-    T2CONbits.TON = 1; // Turns on timer
-    while(IFS0bits.T2IF == 0); //Delays until TMR1 hits PR
-    T2CONbits.TON = 0; // Turns off timer
-    
+    TMR1 = 0; //clear timer 1
+    PR1 = 6*delay - 1; // set PR equal to a 1us * delay
+    IFS0bits.T1IF = 0; //lower interrupt flag
+    T1CONbits.TON =  1;
+    while(IFS0bits.T1IF == 0); 
+    T1CONbits.TON = 0; //disable timer 1
 }
