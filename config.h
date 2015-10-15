@@ -9,7 +9,13 @@
 #ifndef CONFIG_H
 #define	CONFIG_H
 
+<<<<<<< HEAD
 //#include <C:\Program Files (x86)\Microchip\xc32\v1.40\pic32-libs\include\xc.h>
+=======
+
+#include <xc.h>
+
+>>>>>>> d7626dbd1081c5808228d451a03660e27f021763
 
 // DEVCFG3
 // USERID = No Setting

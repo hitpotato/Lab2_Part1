@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <xc.h>
 #include "keypad.h"
 
@@ -81,3 +82,16 @@ unsigned char getKey() {
     
     
 }
+=======
+#include "keypad.h"
+
+void scanKeypad(){
+    //Scans through Keypad
+}
+void initKeypad() {
+    //Keypad Initialization
+}
+unsigned char getKey() {
+    //Returns key that is being pressed
+}
+>>>>>>> d7626dbd1081c5808228d451a03660e27f021763

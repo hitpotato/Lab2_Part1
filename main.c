@@ -8,7 +8,11 @@
 #include <xc.h>
 #include <sys/attribs.h>
 #include <string.h>
+<<<<<<< HEAD
 #include<stdio.h>
+=======
+#include <stdio.h>
+>>>>>>> d7626dbd1081c5808228d451a03660e27f021763
 #include "config.h"
 #include "interrupt.h"
 #include "timer.h"
@@ -49,6 +53,10 @@ int main(void) {
         printStringLCD(message);
         moveCursorLCD(2,1);
         printStringLCD(password);
+<<<<<<< HEAD
+=======
+        moveCursorLCD(2,1);
+>>>>>>> d7626dbd1081c5808228d451a03660e27f021763
         switch(state) {
             case scanKeys: //Scans through Keypad waiting for button press
                 strcpy(message, "Enter");
@@ -77,6 +85,7 @@ int main(void) {
                 } 
                 break;
             case checkPass: // Determines if PW is correct
+<<<<<<< HEAD
                 if(checkValid() == 1) {
                     if(checkPassword() == 1) {
                         locked = 0;
@@ -96,6 +105,31 @@ int main(void) {
                 }
                 strcpy(message, "Invalid");
                 
+=======
+                if(checkValid() == 1) { //Checks if PW is even Valid
+                    if(checkPassword() == 1) { //Checks PW against those already saved
+                        locked = 0;
+                        printStringLCD("Good");
+                    }
+                    else {
+                        printStringLCD("Bad");
+                        locked = 1;
+                    }
+                }
+                else printStringLCD("Bad");
+                state = scanKeys;
+                delaySec();
+                delaySec();
+                break;
+            case storePass: //Saves PW
+                if(checkValid() == 1) {
+                    printStringLCD("Valid");
+                    writeToStorage();
+                }
+                else printStringLCD("Invalid");
+                delaySec();
+                delaySec();
+>>>>>>> d7626dbd1081c5808228d451a03660e27f021763
                 set = 0;
                 break;
             case debouncePress: //Debounce
@@ -136,7 +170,11 @@ int checkValid() {
     }
     return valid;
 }
+<<<<<<< HEAD
 void writeToStorage(void) {
+=======
+void writeToStorage() {
+>>>>>>> d7626dbd1081c5808228d451a03660e27f021763
     int i;
     if(numberStored < 3) {
         for(i = 0; i < 4; i++) {
@@ -149,4 +187,8 @@ void writeToStorage(void) {
 void __ISR(_CHANGE_NOTICE_VECTOR, IPL7SRS) __CNInterrupt(void){
     if(state == scanKeys) state = debouncePress;
     else if(state == wait) state = debounceRelease;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d7626dbd1081c5808228d451a03660e27f021763

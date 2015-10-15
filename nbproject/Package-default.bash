@@ -1,0 +1,132 @@
+#!/bin/bash -x
+
+#
+# Generated - do not edit!
+#
+
+# Macros
+TOP=`pwd`
+CND_CONF=default
+CND_DISTDIR=dist
+TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
+TMPDIRNAME=tmp-packaging
+<<<<<<< HEAD
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Lab2_Part1-master.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=Lab2_Part1-master.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=lab2part1-master/
+
+# Functions
+function checkReturnCode
+{
+    rc=$?
+    if [ $rc != 0 ]
+    then
+        exit $rc
+    fi
+}
+function makeDirectory
+# $1 directory path
+# $2 permission (optional)
+{
+    mkdir -p "$1"
+    checkReturnCode
+    if [ "$2" != "" ]
+    then
+      chmod $2 "$1"
+      checkReturnCode
+    fi
+}
+function copyFileToTmpDir
+# $1 from-file path
+# $2 to-file path
+# $3 permission
+{
+    cp "$1" "$2"
+    checkReturnCode
+    if [ "$3" != "" ]
+    then
+        chmod $3 "$2"
+        checkReturnCode
+    fi
+}
+
+# Setup
+cd "${TOP}"
+mkdir -p ${CND_DISTDIR}/${CND_CONF}/package
+rm -rf ${TMPDIR}
+mkdir -p ${TMPDIR}
+
+# Copy files and create directories and links
+cd "${TOP}"
+makeDirectory ${TMPDIR}/lab2part1-master/bin
+copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
+
+
+# Generate tar file
+cd "${TOP}"
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/lab2part1-master.tar
+cd ${TMPDIR}
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/lab2part1-master.tar *
+=======
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Lab2-Part2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=Lab2-Part2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=lab2-part2.x/
+
+# Functions
+function checkReturnCode
+{
+    rc=$?
+    if [ $rc != 0 ]
+    then
+        exit $rc
+    fi
+}
+function makeDirectory
+# $1 directory path
+# $2 permission (optional)
+{
+    mkdir -p "$1"
+    checkReturnCode
+    if [ "$2" != "" ]
+    then
+      chmod $2 "$1"
+      checkReturnCode
+    fi
+}
+function copyFileToTmpDir
+# $1 from-file path
+# $2 to-file path
+# $3 permission
+{
+    cp "$1" "$2"
+    checkReturnCode
+    if [ "$3" != "" ]
+    then
+        chmod $3 "$2"
+        checkReturnCode
+    fi
+}
+
+# Setup
+cd "${TOP}"
+mkdir -p ${CND_DISTDIR}/${CND_CONF}/package
+rm -rf ${TMPDIR}
+mkdir -p ${TMPDIR}
+
+# Copy files and create directories and links
+cd "${TOP}"
+makeDirectory ${TMPDIR}/lab2-part2.x/bin
+copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
+
+
+# Generate tar file
+cd "${TOP}"
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/lab2-part2.x.tar
+cd ${TMPDIR}
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/lab2-part2.x.tar *
+>>>>>>> origin/master
+checkReturnCode
+
+# Cleanup
+cd "${TOP}"
+rm -rf ${TMPDIR}
